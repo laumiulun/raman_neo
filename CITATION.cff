@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+title: "raman_neo: genetic-algorithm fitting of Raman spectra"
+version: 0.1.0
+date-released: 2026-09-09
+license: GPL-3.0-or-later
+repository-code: "https://github.com/laumiulun/raman_neo"
+authors:
+  - family-names: Lau
+    given-names: Miu Lun
+    alias: Andy
+references:
+  - type: article
+    title: "Analysis of Extended X-ray Absorption Fine Structure (EXAFS) Data Using Artificial Intelligence Techniques"
+    authors:
+      - family-names: Terry
+        given-names: Jeff
+      - family-names: Lau
+        given-names: Miu Lun
+    journal: "Applied Surface Science"
+    volume: 547
+    start: 149059
+    year: 2021
+    doi: 10.1016/j.apsusc.2021.149059
+    notes: "raman_neo mirrors the EXAFS_Neo methodology for Raman spectroscopy."

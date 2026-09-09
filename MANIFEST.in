@@ -1,0 +1,8 @@
+include LICENSE
+include README.md
+include CHANGELOG.md
+include CITATION.cff
+recursive-include raman_neo/data *
+recursive-include test_inputs *.ini
+graft tests
+global-exclude __pycache__ *.py[cod] *.log

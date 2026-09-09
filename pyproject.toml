@@ -1,0 +1,101 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "raman_neo"
+description = "AI analysis of Raman spectra using a genetic algorithm"
+readme = "README.md"
+license = {text = "GPL-3.0-or-later"}
+keywords = ["raman", "spectroscopy", "genetic algorithm", "curve fitting", "AI", "peak fitting"]
+requires-python = ">=3.10"
+version = "0.1.0"
+
+authors = [
+    {name = "Miu Lun (Andy) Lau", email = "andylau@u.boisestate.edu"},
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Scientific/Engineering :: Chemistry",
+    "Topic :: Scientific/Engineering :: Physics",
+]
+
+dependencies = [
+    "numpy",
+    "matplotlib",
+    "attrs",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=7", "pytest-cov", "coverage"]
+dev = [
+    "ruff>=0.6",
+    "pytest>=7",
+    "pytest-cov",
+    "coverage",
+    "build",
+    "twine",
+    "pre-commit",
+]
+
+[project.urls]
+Homepage = "https://github.com/laumiulun/raman_neo"
+Repository = "https://github.com/laumiulun/raman_neo"
+Issues = "https://github.com/laumiulun/raman_neo/issues"
+Changelog = "https://github.com/laumiulun/raman_neo/blob/main/CHANGELOG.md"
+
+[project.scripts]
+raman_neo = "raman_neo.input_arg:main"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["raman_neo*"]
+
+[tool.setuptools.package-data]
+"raman_neo" = ["data/*"]
+
+# ---------------------------------------------------------------------------
+# Tooling
+# ---------------------------------------------------------------------------
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+extend-exclude = ["build", "dist", ".venv"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+# E501 (line length) is handled by the formatter; B008 flags attrs field() defaults.
+ignore = ["E501", "B008"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E402", "F841"]
+"raman_neo/**/__init__.py" = ["F401"]
+
+[tool.pytest.ini_options]
+minversion = "7.0"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.coverage.run]
+source = ["raman_neo"]
+omit = ["*/tests/*", "*/__main__.py"]
+
+[tool.coverage.report]
+show_missing = true
+exclude_lines = [
+    "pragma: no cover",
+    "if __name__ == .__main__.:",
+    "raise NotImplementedError",
+]
