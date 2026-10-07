@@ -50,7 +50,7 @@ jobs:
         run: python -m pytest --cov=raman_neo --cov-report=xml --cov-report=term-missing
       - name: Upload coverage artifact
         if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: coverage-xml
           path: coverage.xml
@@ -70,7 +70,7 @@ jobs:
           python -m pip install --upgrade pip build twine
           python -m build
           python -m twine check dist/*
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: dist
           path: dist/*
